@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Spatie\Permission\Models\Role;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
@@ -42,7 +43,8 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::pluck('name', 'id')->all();
+        return view('users.create')->with('roles', $roles);
     }
 
     /**
@@ -57,6 +59,7 @@ class UserController extends AppBaseController
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
+        $user->assignRole($request->input('roles'));
 
         Flash::success('User saved successfully.');
 
@@ -100,7 +103,8 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        $roles = Role::pluck('name', 'id')->all();
+        return view('users.edit')->with('user', $user)->with('roles', $roles);
     }
 
     /**
@@ -120,6 +124,7 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
+
         $input =  $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
@@ -127,6 +132,7 @@ class UserController extends AppBaseController
             unset($input['password']);
         }
         $user = $this->userRepository->update($input, $id);
+        $user->syncRoles($request->input('roles'));
 
         Flash::success('User updated successfully.');
 
@@ -165,5 +171,4 @@ class UserController extends AppBaseController
 
         return response()->json($user);
     }
-
 }

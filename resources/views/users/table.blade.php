@@ -4,6 +4,7 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Roles</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -12,6 +13,9 @@
             <tr>
                 <td>{!! $user->name !!}</td>
                 <td>{!! $user->email !!}</td>
+                <td>@foreach ($user->roles as $role)
+                    <span class="badge bg-green">{!! $role->name !!}</span>
+                @endforeach</td>
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
