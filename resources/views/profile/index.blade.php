@@ -15,12 +15,13 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/'.Auth::user()->avatar) }}" />
+                    <img class="profile-user-img img-responsive img-circle"
+                        src="{{ asset('storage/'.Auth::user()->avatar) }}" />
 
                     <h3 class="profile-username text-center">{{ $profile->name }}</h3>
 
                     <p class="text-muted text-center">{{ $profile->email }}</p>
-
+                    {{--
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
                             <b>Followers</b> <a class="pull-right">1,322</a>
@@ -32,8 +33,8 @@
                             <b>Friends</b> <a class="pull-right">13,287</a>
                         </li>
                     </ul>
-
                     <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+--}}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -56,7 +57,7 @@
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+                    <li class="active"><a href="#settings" data-toggle="tab">Mis datos</a></li>
                     <li><a href="#activity" data-toggle="tab">Activity</a></li>
                     <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
                 </ul>
@@ -84,6 +85,7 @@
                                 {!! Form::file('avatar') !!}
                             </div>
                         </div>
+                        {{--
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
@@ -93,6 +95,7 @@
                                 </div>
                             </div>
                         </div>
+                         --}}
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-danger">Submit</button>
