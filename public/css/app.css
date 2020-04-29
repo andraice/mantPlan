@@ -1,0 +1,70 @@
+/** LOGIN **/
+
+.login-page {
+    background: -moz-linear-gradient(135deg, rgba(44, 115, 28, 1) 0%, rgba(67, 176, 42, 1) 40%, rgba(81, 214, 51, 1) 100%);
+    /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(81, 214, 51, 1)), color-stop(60%, rgba(67, 176, 42, 1)), color-stop(100%, rgba(44, 115, 28, 1)));
+    /* safari4+,chrome */
+    background: -webkit-linear-gradient(135deg, rgba(44, 115, 28, 1) 0%, rgba(67, 176, 42, 1) 40%, rgba(81, 214, 51, 1) 100%);
+    /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(135deg, rgba(44, 115, 28, 1) 0%, rgba(67, 176, 42, 1) 40%, rgba(81, 214, 51, 1) 100%);
+    /* opera 11.10+ */
+    background: -ms-linear-gradient(135deg, rgba(44, 115, 28, 1) 0%, rgba(67, 176, 42, 1) 40%, rgba(81, 214, 51, 1) 100%);
+    /* ie10+ */
+    background: linear-gradient(315deg, rgba(44, 115, 28, 1) 0%, rgba(67, 176, 42, 1) 40%, rgba(81, 214, 51, 1) 100%);
+    /* w3c */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#51D633', endColorstr='#2C731C', GradientType=0);
+    /* ie6-9 */
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 45px;
+}
+
+.login-logo,
+.register-logo {
+    margin-bottom: 5px;
+}
+
+.login-logo img,
+.register-logo img {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.login-box-msg {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.login-box,
+.register-box {
+    padding: 30px;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-box-shadow: 0px 10px 20px -2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 10px 20px -2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 10px 20px -2px rgba(0, 0, 0, 0.25);
+}
+
+.login-box-body,
+.register-box-body {
+    background-color: transparent;
+}
+
+.login-box-copyright {
+    font-size: smaller;
+    color: gray;
+    text-align: center;
+}
+
+.g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+}
+
+#tech_operator_signature_canvas {
+    border: 2px dotted black;
+    background-color: rgb(230, 230, 230);
+}
