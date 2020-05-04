@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,12 +17,13 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
+    <!-- Theme style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
+
     <!-- iCheck -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
 
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/skins/_all-skins.min.css">
 
     <!-- App -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -39,95 +39,90 @@
     <![endif]-->
 
 </head>
-
 <body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ url('/home') }}"><img src="{{ asset('images/logo.png') }}"
-                    title="{{ env('APP_NAME') }}" /></b></a>
-        </div>
-
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">{{__('Welcome to MantPlan')}}</p>
-
-            <form method="post" action="{{ url('/login') }}">
-                {!! csrf_field() !!}
-
-                <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}"
-                        placeholder="Email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                    @endif
-                </div>
-
-                <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                    @endif
-
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6 col-md-6 offset-md-4">
-                        {!! NoCaptcha::display() !!}
-                    </div>
-                    @if ($errors->has('g-recaptcha-response'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                    </span>
-                    @endif
-                </div>
-                <div class="row">
-                    <div class="col-xs-7">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox" name="remember"> Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-xs-5">
-                        <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-
-            <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-            <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
-
-
-
-        </div>
-        <!-- /.login-box-body -->
-        <p class="login-box-copyright">{{__('© 2019 - 2020 All Right Reserved.')}}</p>
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{ url('/home') }}"><img src="{{ asset('images/logo.png') }}"
+                title="{{ env('APP_NAME') }}" /></b></a>
     </div>
-    <!-- /.login-box -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">@lang('auth.login.title')</p>
 
-    <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/js/adminlte.min.js"></script>
+        <form method="post" action="{{ url('/login') }}">
+            @csrf
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-    <script>
-        $(function () {
+            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
+                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="@lang('auth.email')">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
+            </div>
+
+            <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+                <input type="password" class="form-control" placeholder="@lang('auth.password')" name="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+                @endif
+
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6 col-md-6 offset-md-4">
+                    {!! NoCaptcha::display() !!}
+                </div>
+                @if ($errors->has('g-recaptcha-response'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+                @endif
+            </div>
+            <div class="row">
+                <div class="col-xs-7">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" name="remember"> @lang('auth.remember_me')
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-5">
+                    <button type="submit" class="btn btn-success btn-block btn-flat">@lang('auth.sign_in')</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <a href="{{ url('/password/reset') }}">@lang('auth.login.forgot_password')</a><br>
+        <a href="{{ url('/register') }}" class="text-center">@lang('auth.login.register_membership')</a>
+
+    </div>
+    <!-- /.login-box-body -->
+    <p class="login-box-copyright">{{__('© 2019 - 2020 All Right Reserved.')}}</p>
+</div>
+<!-- /.login-box -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+<script>
+    $(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
     });
-    </script>
+</script>
 </body>
-
 </html>
