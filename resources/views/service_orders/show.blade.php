@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            <a href="{!! route('serviceOrders.index') !!}" class="btn btn-default">Back</a>
+            <a href="{!! route('serviceOrders.index') !!}" class="btn btn-default">@lang('crud.back')</a>
         </div>
     </div>
 </div>

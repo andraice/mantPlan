@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('service_order_files.show_fields')
-                    <a href="{!! route('serviceOrderFiles.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('serviceOrderFiles.index') !!}" class="btn btn-default">@lang('crud.back')</a>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>Equipment</h1>
         <ol class="breadcrumb">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('equipment.create') !!}">Add New</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('equipment.create') !!}">@lang('crud.add_new')</a>
         </ol>
     </section>
     <div class="content">

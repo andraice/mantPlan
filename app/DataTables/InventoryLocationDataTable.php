@@ -2,11 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Equipment;
+use App\Models\InventoryLocation;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Column;
 
-class EquipmentDataTable extends DataTable
+class InventoryLocationDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -17,21 +18,19 @@ class EquipmentDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('id', function ($model) {
-            return $model->sid;
-        });
-        return $dataTable->addColumn('action', 'equipment.datatables_actions');
+
+        return $dataTable->addColumn('action', 'inventory_locations.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Equipment $model
+     * @param \App\Models\InventoryLocation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Equipment $model)
+    public function query(InventoryLocation $model)
     {
-        return $model->newQuery()->with('user');
+        return $model->newQuery();
     }
 
     /**
@@ -46,7 +45,6 @@ class EquipmentDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false, 'title' => __('crud.action')])
             ->parameters([
-                'responsive' => true,
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
@@ -77,6 +75,9 @@ class EquipmentDataTable extends DataTable
                        'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
                     ],
                 ],
+                 'language' => [
+                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
+                 ],
             ]);
     }
 
@@ -88,13 +89,8 @@ class EquipmentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'name',
-            'serial_number',
-            'startup_date',
-            'equipment_status',
-            'status',
-            'user.name'
+            'name' => new Column(['title' => __('models/inventory_location.fields.name'), 'data' => 'name']),
+            'description' => new Column(['title' => __('models/inventory_location.fields.description'), 'data' => 'description'])
         ];
     }
 
@@ -105,6 +101,6 @@ class EquipmentDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'equipmentdatatable_' . time();
+        return '$MODEL_NAME_PLURAL_SNAKE_$datatable_' . time();
     }
 }

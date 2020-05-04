@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>Companies</h1>
         <h1 class="breadcrumb">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('company.create') !!}">Add New</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('company.create') !!}">@lang('crud.add_new')</a>
         </h1>
     </section>
     <div class="content">

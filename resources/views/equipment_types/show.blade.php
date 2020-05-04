@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('equipment_types.show_fields')
-                    <a href="{!! route('equipmentTypes.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('equipmentTypes.index') !!}" class="btn btn-default">@lang('crud.back')</a>
                 </div>
             </div>
         </div>
