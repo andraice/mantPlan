@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\InventoryLocation;
+use App\Models\CompanyLocation;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class InventoryLocationDataTable extends DataTable
+class CompanyLocationDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,16 +19,16 @@ class InventoryLocationDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'inventory_locations.datatables_actions');
+        return $dataTable->addColumn('action', 'company_locations.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\InventoryLocation $model
+     * @param \App\Models\CompanyLocation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(InventoryLocation $model)
+    public function query(CompanyLocation $model)
     {
         return $model->newQuery();
     }
@@ -76,7 +76,7 @@ class InventoryLocationDataTable extends DataTable
                     ],
                 ],
                  'language' => [
-                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
+                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json'),
                  ],
             ]);
     }
@@ -89,8 +89,9 @@ class InventoryLocationDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'name' => new Column(['title' => __('models/inventory_location.fields.name'), 'data' => 'name']),
-            'description' => new Column(['title' => __('models/inventory_location.fields.description'), 'data' => 'description'])
+            'name' => new Column(['title' => __('models/companyLocations.fields.name'), 'data' => 'name']),
+            'location_address' => new Column(['title' => __('models/companyLocations.fields.location_address'), 'data' => 'location_address']),
+            'status' => new Column(['title' => __('models/companyLocations.fields.status'), 'data' => 'status'])
         ];
     }
 

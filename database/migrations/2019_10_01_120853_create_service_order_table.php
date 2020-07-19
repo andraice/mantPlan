@@ -21,7 +21,7 @@ class CreateServiceOrderTable extends Migration
             $table->integer('requestor_id')->unsigned();
             $table->integer('technical_support_id')->unsigned();
             $table->integer('equipment_id')->unsigned();
-            $table->string('status', 15);
+            $table->char('status', 1);
             $table->dateTime('start');
             $table->dateTime('deadline');
             $table->string('geopos')->default("");

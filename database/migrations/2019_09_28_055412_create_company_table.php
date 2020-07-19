@@ -21,7 +21,7 @@ class CreateCompanyTable extends Migration
             $table->text('address');
             $table->string('state');
             $table->mediumText('email');
-            $table->char('status');
+            $table->char('status', 1);
             $table->text('image')->nullable();
             $table->integer('company_type_id')->unsigned();
             $table->integer('user_id')->unsigned();

@@ -22,7 +22,7 @@ class CreateEquipmentTable extends Migration
             $table->string('image');
             $table->text('location_address');
             $table->string('location_geo');
-            $table->char('status');
+            $table->char('status', 1);
             $table->integer('equipment_model_id')->unsigned();
             $table->integer('equipment_type_id')->unsigned();
             $table->integer('user_id')->unsigned();

@@ -46,16 +46,6 @@ class Company extends Model
         'user_id'
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $userid = (!\Auth::guest()) ? \Auth::user()->id : null ;
-            $model->user_id = $userid;
-        });
-    }
-
     /**
      * The attributes that should be casted to native types.
      *
@@ -82,6 +72,16 @@ class Company extends Model
     public static $rules = [
 
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $userid = (!\Auth::guest()) ? \Auth::user()->id : null ;
+            $model->user_id = $userid;
+        });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

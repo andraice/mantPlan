@@ -16,7 +16,7 @@ class CreateEquipmentBrandTable extends Migration
         Schema::create('equipment_brand', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->char('status');
+            $table->char('status', 1);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

@@ -79,3 +79,7 @@
 </li>
 @endhasrole
 
+<li class="{{ Request::is('companyLocations*') ? 'active' : '' }}">
+    <a href="{{ route('companyLocations.index') }}"><i class="fa fa-edit"></i><span>@lang('models/companyLocations.plural')</span></a>
+</li>
+

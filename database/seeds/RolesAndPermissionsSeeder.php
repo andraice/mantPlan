@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Seeder;
 use App\User;
 use Spatie\Permission\Models\Role;
@@ -26,6 +27,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['name' => 'company']);
         $role->givePermissionTo(['create']);
 
+        // or may be done by chaining
+        $role = Role::create(['name' => 'manager']);
+        $role->givePermissionTo(['create']);
+
         $role = Role::create(['name' => 'operator']);
         $role->givePermissionTo('edit');
 
@@ -47,6 +52,5 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $user = User::find(5);
         $user->assignRole('operator');
-
     }
 }

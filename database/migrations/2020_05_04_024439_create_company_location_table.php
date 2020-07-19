@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEquipmentModelTable extends Migration
+class CreateCompanyLocationTable extends Migration
 {
 
     /**
@@ -13,15 +13,18 @@ class CreateEquipmentModelTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipment_model', function (Blueprint $table) {
+        Schema::create('company_location', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('location_address');
             $table->char('status', 1);
+            $table->integer('manager_id')->unsigned();
+            $table->integer('company_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('equipment_brand_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('equipment_brand_id')->references('id')->on('equipment_brand');
+            $table->foreign('manager_id')->references('id')->on('users');
+            $table->foreign('company_id')->references('id')->on('company');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -33,6 +36,6 @@ class CreateEquipmentModelTable extends Migration
      */
     public function down()
     {
-        Schema::drop('equipment_model');
+        Schema::drop('company_location');
     }
 }

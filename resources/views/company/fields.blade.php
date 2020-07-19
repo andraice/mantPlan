@@ -46,11 +46,11 @@
         {!! Form::label('status', 'Status:') !!}
         <div class="clearfix"></div>
         <label class="radio-inline">
-            {!! Form::radio('status', "A", null) !!} A
+            {!! Form::radio('status', "A", null) !!} Activo
         </label>
 
         <label class="radio-inline">
-            {!! Form::radio('status', "I", null) !!} I
+            {!! Form::radio('status', "I", null) !!} Inactivo
         </label>
     </div>
 </div>
